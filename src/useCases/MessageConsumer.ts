@@ -1,6 +1,13 @@
+import { Consumer, Kafka } from 'kafkajs'
+
+interface MessageConsumerInterface {
+  broker: Kafka
+}
 
 class MessageConsumer {
-  constructor({ broker }) {
+  consumer: Consumer
+
+  constructor({ broker }: MessageConsumerInterface) {
     this.consumer = broker.consumer({ groupId: 'test-group' })
   }
 
@@ -11,11 +18,11 @@ class MessageConsumer {
     await this.consumer.run({
       eachMessage: async ({ topic, partition, message }) => {
         console.log({
-          value: `${message.value.toString()} | ${topic.toString()} | ${partition.toString()}`,
+          value: `${message.value?.toString()} | ${topic.toString()} | ${partition.toString()}`,
         })
       },
     })
   }
 }
 
-module.exports = MessageConsumer
+export default MessageConsumer

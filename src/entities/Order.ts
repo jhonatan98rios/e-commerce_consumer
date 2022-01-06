@@ -1,5 +1,12 @@
-class Message {
-  constructor({ data }) {
+interface OrderInterface {
+  data: string
+}
+
+class Order {
+  id: number
+  content: string
+
+  constructor({ data }: OrderInterface) {
     this.id = Math.floor(Math.random() * 100) + Date.now()
     this.content = data
   }
@@ -7,8 +14,8 @@ class Message {
   isValid() {
     const propertyNames = Object.getOwnPropertyNames(this)
     const amountInvalid = propertyNames
-      .map(property => (!!this[property]) ? null : `${property} is missing`)
-      .filter(item => !!item)
+    .map((property) => (!!this[property as keyof Order]) ? null : `${property} is missing`)
+    .filter(item => !!item)
 
     return {
       valid: amountInvalid.length === 0,
@@ -16,5 +23,4 @@ class Message {
     }
   }
 }
-
-module.exports = Message
+export default Order
