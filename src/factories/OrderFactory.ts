@@ -1,6 +1,5 @@
-const OrderRepository = require('../repositories/OrderRepository')
-const OrderService = require('../services/MessageService')
-
+import OrderRepository from '../repositories/OrderRepository'
+import OrderService from '../services/OrderService'
 
 
 const generateInstance = () => {
@@ -15,4 +14,4 @@ const generateInstance = () => {
     return orderService
 }
 
-module.exports = { generateInstance }
+export default { generateInstance } 

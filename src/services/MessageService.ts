@@ -1,4 +1,5 @@
 import MessageConsumer from "../useCases/MessageConsumer"
+import OrderService from "./OrderService"
 
 interface MessageServiceInterface {
     messageConsumer: MessageConsumer
@@ -11,8 +12,8 @@ class MessageService {
         this.messageConsumer = messageConsumer
     }
 
-    async subscribe() {
-        return this.messageConsumer.subscribe()
+    async subscribe(orderService: OrderService) {
+        return this.messageConsumer.subscribe(orderService)
     }
 }
 

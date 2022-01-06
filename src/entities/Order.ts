@@ -1,14 +1,15 @@
 interface OrderInterface {
-  data: string
+  id: number
+  content: string
 }
 
 class Order {
   id: number
   content: string
 
-  constructor({ data }: OrderInterface) {
-    this.id = Math.floor(Math.random() * 100) + Date.now()
-    this.content = data
+  constructor({ id, content }: OrderInterface) {
+    this.id = id
+    this.content = content
   }
 
   isValid() {

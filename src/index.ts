@@ -1,7 +1,8 @@
-import Message from './entities/Message'
-import Order from './entities/Order'
 
 import messageFactory from './factories/MessageFactory'
 const messageService = messageFactory.generateInstance()
 
-messageService.subscribe()
+import OrderFactory from './factories/OrderFactory'
+const orderService = OrderFactory.generateInstance()
+
+messageService.subscribe(orderService)

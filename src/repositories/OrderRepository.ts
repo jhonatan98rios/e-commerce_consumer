@@ -1,4 +1,3 @@
-import { TOPIC_NAME } from '../constants'
 import Order from '../entities/Order'
 
 interface OrderRepositoryInterface {
